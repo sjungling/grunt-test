@@ -1,0 +1,8 @@
+@import "compass";
+h1 {
+	color: black;
+}
+
+h2 {
+	@extend h1;
+}
