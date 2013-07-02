@@ -4,24 +4,39 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      all: ['Gruntfile.js', 'test.js']
+      all: ['Gruntfile.js', 'test.js'],
+      jshintrc: ".jshintrc"
     },
     sass: {
-      all: ['sass/**.scss'],
-      options: {
-        check: true,
-        compass: true
+      dev: {
+        files: {
+          'assets/css/storestyle.css': 'sass/test.scss'
+        },
+        options: {
+          check: true,
+          compass: true
+        }
       }
     },
     jsbeautifier: {
       files: ["scripts/**/*.js"]
     }
-
+    // watch: {
+    //   javascript: {
+    //     files: 'scripts/**/*.js',
+    //     tasks: ['jshint']
+    //   },
+    //   sass: {
+    //     files: 'sass/**/*.scss',
+    //     task: 'sass'
+    //   }
+    // }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-jsbeautifier');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'sass', 'jsbeautifier']);

@@ -6,4 +6,5 @@ notifications:
 before_script:
   - gem update --system
   - gem install sass
+  - gem install compass
   - npm install grunt-cli -g
